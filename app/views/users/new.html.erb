@@ -1,24 +1,5 @@
-<h1 class="display-4">Sign up</h1>
-<p class="lead">Join the club...</p>
+<% provide(:title, "Register"  )%>
+<% provide(:button_text, "Register"  )%>
 
-<%= form_for(@user, url: signup_path) do |f| %>
-    <%= render 'users/error_messages' %>
-    
-    <div class="form-group">
-        <label>Name:</label>
-        <%= f.text_field :name, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-        <label>Email:</label>
-        <%= f.text_field :email, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-        <label>Password:</label>
-        <%= f.password_field :password, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-        <label>Confirm Password:</label>
-        <%= f.password_field :password_confirmation, class: 'form-control' %>
-    </div>
-    <%= f.submit "Submit", class: 'btn btn-success' %>
-<% end %>
+<h1 class="mt-2">Sign up</h1>
+<%= render 'users/form' %>
