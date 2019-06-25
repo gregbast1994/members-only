@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
+
+  def setup
+    @user = users(:greg)
+  end
+
   test 'login with invalid information' do
     get login_path
     assert_template 'sessions/new'
@@ -11,13 +16,15 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert flash.empty?
   end
 
-  # we need to create a fixture user!!!
-  test 'login with valid information' do
+  test 'login with valid information followed by logout' do
     get login_path
-    post login_path, params: { session: { email: 'greg@drunk.kiwi',
+    post login_path, params: { session: { email: @user.email,
                                           password: 'password' } }
     assert_redirected_to @user
     follow_redirect!
     assert_template 'users/show'
+    assert_select 'a[href=?]', logout_path
+    get logout_path
+    assert_nil session[:user_id]
   end
 end
