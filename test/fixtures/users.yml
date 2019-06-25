@@ -3,6 +3,10 @@
 greg:
   name: greg bastianelli
   email: greg@drunk.kiwi
-  # how do we digest
+  password_digest: <%= User.digest('password') %>
+
+adina:
+  name: adina huckle
+  email: adina@drunk.kiwi
   password_digest: <%= User.digest('password') %>
 

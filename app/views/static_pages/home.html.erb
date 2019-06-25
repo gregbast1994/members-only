@@ -1,8 +1,5 @@
-<div class="jumbotron mt-2 text-center">
-  <h1>¯\_(ツ)_/¯</h1>
-  <h2 class="display-4">Members Only</h1>
-  <p class="lead">Its very likey we are talking shit about you</p>
-  <hr class="my-4">
-  <p>But you will never know unless you register</p>
-  <%= link_to 'Register', signup_path, class: 'btn btn-danger btn-lg btn-block' %>
-</div>
+<% unless logged_in? %>
+  <%= render 'static_pages/register' %>
+<% else %>
+  <% # show posts %>
+<% end %>
