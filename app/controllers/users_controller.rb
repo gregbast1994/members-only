@@ -2,6 +2,7 @@ class UsersController < ApplicationController
     before_action :correct_user, only: [:edit, :update]
 
     def new
+        redirect_to current_user if logged_in?
         @user = User.new
     end
 
@@ -36,8 +37,10 @@ class UsersController < ApplicationController
 
     def correct_user
         @user = User.find(params[:id])
-        flash[:danger] = "Sorry, you have attempted to access an unathorized page"
-        redirect_to root_path unless current_user?(@user)
+        unless current_user?(@user)
+            flash[:danger] = "wrong page buddy"
+            redirect_to root_url
+        end
     end
 
     def user_params
