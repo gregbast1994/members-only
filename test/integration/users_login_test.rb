@@ -28,15 +28,19 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_nil session[:user_id]
   end
 
-  test 'remember user' do
+  test 'remember user even after closing the browser' do
     log_in_as(@user, remember_me: '1')
     assert_not_empty cookies[:remember_token]
+    session.delete(:user_id)
+    get root_url
+    assert_select 'a[href=?]', logout_path
   end
 
   test 'forget user' do
     log_in_as(@user, remember_me: '1')
     log_in_as(@user, remember_me: '0')
     assert_empty cookies[:remember_token]
+    assert_empty cookies[:user_id]
   end
 
 end
