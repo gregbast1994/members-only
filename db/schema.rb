@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2019_06_25_192948) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "remember_digest"
-    t.datetime "remember_at"
   end
 
 end
