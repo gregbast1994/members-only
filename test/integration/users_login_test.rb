@@ -27,4 +27,15 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     get logout_path
     assert_nil session[:user_id]
   end
+
+  test 'remember user' do
+    log_in_as(@user, remember_me: '1')
+    assert_not_empty cookies[:remember_token]
+  end
+
+  test 'forget user' do
+    log_in_as(@user, remember_me: '1')
+    log_in_as(@user, remember_me: '0')
+    assert_empty cookies[:remember_token]
+  end
 end

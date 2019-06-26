@@ -23,4 +23,14 @@ module SessionsHelper
         @current_user = nil
     end
 
+    def remember(user)
+        user.remember
+        cookies.signed.permanent[:remember_token] = user.remember_token
+    end
+
+    def forget(user)
+        user.forget
+        cookies[:remember_token] = nil
+    end
+
 end
