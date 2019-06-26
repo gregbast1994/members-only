@@ -16,7 +16,7 @@ class ActiveSupport::TestCase
   end
 
   def is_logged_in?
-    !session[:user_id].nil?
+    !current_user.nil?
   end
 
   class ActionDispatch::IntegrationTest
