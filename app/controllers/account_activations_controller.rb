@@ -1,7 +1,7 @@
 class AccountActivationsController < ApplicationController
   def edit
     @user = User.find_by(email: URI.decode(params[:account_activations][:email]))
-    if @user && !@user.activated? && @user.authenticated?(:activation, params[:account_activations][:id])
+    if @user && !@user.activated? && @user.authenticated?(:activation, params[:id])
       @user.activate
       log_in @user
       redirect_to @user.show
