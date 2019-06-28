@@ -3,4 +3,5 @@ module UsersHelper
         digest = Digest::MD5.hexdigest(user.email)
         image_tag "https://www.gravatar.com/avatar/#{digest}?size=#{size}", class: 'mx-2'
     end
+  
 end

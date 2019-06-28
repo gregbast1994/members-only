@@ -29,7 +29,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <%= link_to 'Edit Profile', edit_user_path(current_user), class: 'dropdown-item' %>
-            <%= link_to 'My friends', '#', class: 'dropdown-item' %>
+            <%= link_to 'Users', users_path, class: 'dropdown-item' %>
             <div class="dropdown-divider"></div>
             <%= link_to 'Logout', logout_path, class: 'dropdown-item' %>
           </div>

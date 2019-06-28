@@ -1,9 +1,15 @@
 class UsersController < ApplicationController
     before_action :correct_user, only: [:edit, :update]
+    before_action :activated?, only: [:show, :edit, :update, :destroy]
+    before_action :admin?, only: [:destroy]
 
     def new
         redirect_to current_user if logged_in?
         @user = User.new
+    end
+
+    def index
+        @users = User.paginate(page: params[:page], per_page: 10)
     end
 
     def create
@@ -35,7 +41,24 @@ class UsersController < ApplicationController
         end
     end
 
+    def destroy
+        @user = User.find(params[:id])
+        unless @user == current_user
+            @user.delete 
+            redirect_to users_path
+        end
+    end
+
     private
+
+    def admin?
+        redirect_to root_path unless current_user.admin?
+    end 
+
+    def activated?
+        @user = User.find(params[:id])
+        redirect_to root_path unless @user.activated?
+    end
 
     def correct_user
         @user = User.find(params[:id])

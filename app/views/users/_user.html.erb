@@ -1,0 +1,8 @@
+<% @users.each do |user| %>
+    <li class="list-group-item">
+        <%= gravatar_for(user)%>
+        <%= link_to user.name, user %>
+        | <%= link_to 'delete', user, method: :delete,
+                                        data: { confirm: "Are you sure?" } %>
+    </li>
+<% end %>
