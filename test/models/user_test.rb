@@ -8,6 +8,11 @@ class UserTest < ActiveSupport::TestCase
                     password_confirmation: 'password')
   end
 
+  test 'should have activation digest on creation' do
+    @user.save
+    assert_not_nil @user.activation_digest
+  end
+
   test 'name cannot be blank' do
     @user.name = ''
     assert_not @user.valid?
