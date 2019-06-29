@@ -44,12 +44,5 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_empty cookies[:user_id]
   end
 
-  test 'redirect to root if the requested user is not activated' do
-    log_in_as(@unactivated_user)
-    get user_path(@unactivated_user)
-    assert_redirected_to root_path
-    get user_path(@user)
-    assert_template 'users/show'
-  end
 
 end

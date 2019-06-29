@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :correct_user, only: [:edit, :update]
-    before_action :activated?, only: [:show, :edit, :update, :destroy]
+    before_action :require_login, except: [:new, :create]
     before_action :admin?, only: [:destroy]
 
     def new
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     end
 
     def index
-        @users = User.paginate(page: params[:page], per_page: 10)
+        @users = User.paginate(page: params[:page])
     end
 
     def create
@@ -55,9 +55,11 @@ class UsersController < ApplicationController
         redirect_to root_path unless current_user.admin?
     end 
 
-    def activated?
-        @user = User.find(params[:id])
-        redirect_to root_path unless @user.activated?
+    def require_login
+        unless logged_in?
+            flash[:danger] = "You must be logged in to do that"
+            redirect_to login_path
+        end
     end
 
     def correct_user
