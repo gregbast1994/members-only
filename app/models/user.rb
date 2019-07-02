@@ -53,14 +53,17 @@ class User < ApplicationRecord
     def create_reset_password_digest
         self.reset_password_token = User.new_token
         update_attribute(:reset_password_digest, User.digest(reset_password_token))
-        update_attribute(:reset_at, Time.zone.now)
+        update_attribute(:reset_sent_at, Time.zone.now)
     end
 
     def send_reset_password_email
         UserMailer.reset_password(self).deliver_now
     end
 
-
+    def password_reset_expired?
+        reset_sent_at < 2.hours.ago
+    end
+        
     
     private
 

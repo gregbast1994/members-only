@@ -43,7 +43,7 @@ end
         password_confirmation: '2' } }
     end
 
-    assert_select 'div#error_explaination', count: 1
+    assert_select 'div#error_explanation', count: 1
   end
 
     

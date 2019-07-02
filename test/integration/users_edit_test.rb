@@ -11,7 +11,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     patch user_path(@user), params: { user: { name: '',
                                               email: '' } }
     assert_template 'users/edit'
-    assert_select 'div#error_explaination', count: 1
+    assert_select 'div#error_explanation', count: 1
   end
 
   test 'edit with valid information' do
