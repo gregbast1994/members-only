@@ -9,4 +9,11 @@ After completing the first 12 chapters of the [Ruby on Rails Tutorial](https://w
 - [x] allow admin users to delete other users
 - [x] implement a 'forgot password' feature, allowing users to submit an email address, create a token, digest and save that token and send email to users to provide access to the rest password form
 - [x] implement a change in the user model which differeniates admins from non-admins. Admins can see and delete other others
-- [ ] model posts and connect them to users
+
+## posts
+- [ ] create post model ( content, user_id:references )
+- [ ] test model validations ( check content/user_id )
+- [ ] seed in some sample posts
+- [ ] display within users/show
+- [ ] create new/create post process
+- [ ] ensure posts can only be seen by logged-in users

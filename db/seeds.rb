@@ -15,7 +15,7 @@ User.create!(name: "Greg Bastianelli",
     activated: true,
     activated_at: Time.zone.now)
            
-99.times do |n|
+25.times do |n|
 name  = Faker::Name.name
 email = "example-#{n+1}@railstutorial.org"
 password = "password"
@@ -25,4 +25,10 @@ User.create!(name:  name,
       password_confirmation: password,
       activated: true,
       activated_at: Time.zone.now)
+end
+
+User.first(5).each do |user|
+    5.times do
+        user.posts.create!(content: Faker::TvShows::Seinfeld.quote)
+    end
 end

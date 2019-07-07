@@ -70,5 +70,13 @@ class UserTest < ActiveSupport::TestCase
     assert_not other_user.valid?
   end
 
+  test 'should delete posts along with user delete' do
+    @user.save
+    @user.posts.create!(content: 'hi')
+    assert_difference 'Post.count', -1 do
+      @user.destroy
+    end
+  end
+
   
 end

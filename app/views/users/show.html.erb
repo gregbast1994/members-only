@@ -1,15 +1,22 @@
-<div class="d-flex mt-2">
-    <span class="d-block">
-        <%= gravatar_for(@user) %>
-    </span>
-    <div>
-        <h4><%= @user.name %> </h4>
-        <p>
-            <%= @user.email %>
-            <% if @user.admin? %>
-                <span class="badge badge-pill badge-dark">Admin</span>
-            <% end %>
-        </p>
-       
+<div class="row">
+    <div class="col-4">
+        <div class="d-flex mt-2">
+            <span class="d-block">
+                <%= gravatar_for(@user) %>
+            </span>
+            <div>
+                <h4><%= @user.name %> </h4>
+                <p>
+                    <%= @user.email %>
+                    <% if @user.admin? %>
+                        <span class="badge badge-pill badge-dark">Admin</span>
+                    <% end %>
+                </p>
+            
+            </div>
+        </div>
+    </div>
+    <div class="posts col">
+            <%= render @posts %>
     </div>
 </div>
