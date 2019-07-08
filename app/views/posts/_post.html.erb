@@ -1,6 +1,7 @@
-<div class="d-flex mt-2">
+<div class="post-<%= post.id %>" class="post mt-2">
     <%= gravatar_for(post.user) %>
-    <p>
-    <%= post.content %>
-    </p>
+    <span><%= post.content %></span>
+    <div class="post-meta">
+        <span class="date text-muted"><%= post.created_at %></span>
+    </div>
 </div>
