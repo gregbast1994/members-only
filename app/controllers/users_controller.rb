@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :correct_user, only: [:edit, :update]
-    before_action :require_login, except: [:new, :create]
+    before_action :require_login, except: [:new, :create, :show]
     before_action :admin?, only: [:destroy]
 
     def new
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        @posts = @user.posts.all
+        @posts = Post.where(parent_id: params[:id])
         @post = @user.posts.build
     end
 

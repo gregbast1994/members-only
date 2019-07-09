@@ -16,4 +16,12 @@ pre{
     &:hover > .edit-post{
         display: block
     }
+    .post-date-time{
+        line-height: auto;
+        display: block;
+        margin: 0px;
+        padding: 0px;
+        font-size: 10px;
+        color: rgba(0,0,0,0.5);
+    }
 }

@@ -2,5 +2,6 @@
     <div class="form-group">
         <%= f.text_area :content, class: 'form-control' %>
     </div>
+    <%= hidden_field(:post, :parent_id, :value => params[:id])%>
     <%= f.submit yield(:button_text), class: 'btn btn-success' %>
 <% end %>

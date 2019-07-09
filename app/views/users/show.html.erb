@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="posts col">
-        <% if current_user?(@user) %>
+        <% if logged_in? %>
             <div class="pb-2 mb-2 border-bottom">
                 <%= render 'posts/form' %>
             </div>

@@ -29,6 +29,9 @@ end
 
 User.first(5).each do |user|
     5.times do
-        user.posts.create!(content: Faker::TvShows::Seinfeld.quote.first(140))
+        user.posts.create!(
+                content: Faker::TvShows::Seinfeld.quote.first(140),
+                parent_id: rand(5) + 1
+            );
     end
 end
