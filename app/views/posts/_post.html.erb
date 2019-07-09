@@ -1,5 +1,6 @@
-<div class="post-<%= post.id %>" class="post mt-2">
+<div id="post-<%= post.id %>" class="post mt-2">
     <%= gravatar_for(post.user) %>
+    <%= link_to 'edit', edit_post_path(post), class: 'edit-post' %>
     <span><%= post.content %></span>
     <div class="post-meta">
         <span class="date text-muted"><%= post.created_at %></span>

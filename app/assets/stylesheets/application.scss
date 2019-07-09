@@ -4,3 +4,16 @@
 pre{
     margin-top: 2rem;
 }
+
+.post{
+    position: relative;
+    .edit-post{
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        display: none;
+    }
+    &:hover > .edit-post{
+        display: block
+    }
+}
